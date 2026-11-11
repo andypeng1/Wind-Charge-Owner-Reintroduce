@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "windchargeownerreintroduce",
+	"version": "${version}",
+	"name": "Wind Charge Owner Reintroduce",
+	"description": "Keeps wind-charge ownership intact when the owner is offline. The owner UUID is copied from the projectile (and passed on to TNT / wind charges spawned by the explosion). An arrow's first hit still bounces off the charge like vanilla (the client mirrors the server-side bounce); when it falls back onto the stationary charge, it is stuck into the block behind it instead of repeatedly hitting and sinking through the trapdoor. The arrow is never deleted, and the charge itself gains no momentum when its owner is offline. Also fixes vanilla arrows slowly sinking into closed trapdoors after short activations.",
+	"authors": [
+		"andypeng1NB"
+	],
+	"license": "CC0-1.0",
+	"icon": "assets/windchargeownerreintroduce/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+          "com.windchargeownerreintroduce.WindChargeOwnerReintroduce"
+		],
+		"client": [
+			"com.windchargereownerintroduce.client.WindChargeOwnerReintroduceClient"
+		]
+	},
+	"mixins": [
+		"windchargeownerreintroduce.mixins.json",
+		{
+			"config": "windchargeownerreintroduce.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
